@@ -25,9 +25,15 @@ def DGSA_light(parameters, responses, ParametersNames = 0, n_clsters = 3, n_boot
     '''
     
     n_samples, n_parameters = parameters.shape[0], parameters.shape[1]
-    '''STEP 1. K-Medoids clustering'''
-    model = KMedoids(n_clusters=n_clsters)
-    Medoids, clsters = model.fit(responses, plotit=False)
+    '''STEP 1. K-Medoids clustering'''    
+    Medoids = None
+    while Medoids is None:
+        try: 
+            model = KMedoids(n_clusters=n_clsters)
+            Medoids, clsters = model.fit(responses, plotit=False)
+            OK = True
+        except:
+            pass
     
     '''STEP 2. Calculate L1-Norm distance between sample distribution and cluster distributions'''
     '''STEP 2.1 Calucate the CDF of the original parameters'''
