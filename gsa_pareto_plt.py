@@ -45,10 +45,8 @@ def gsa_pareto_plt(GSA_dataframe):
     plt.figure(figsize=(12,5))
     plt.bar(np.arange(n_plt_para), pltdata, width=0.85, color = colors,edgecolor='k', linewidth=0.5,)
     plt.xlim([-0.6,n_plt_para])
-    if max(pltdata[:n_plt_para])>3:
-        plt.ylim([min(pltdata[:n_plt_para]-0.2), 3])
-    else:
-        plt.ylim([min(pltdata[:n_plt_para]-0.2), max(pltdata[:n_plt_para]+0.05)])
+
+    plt.ylim([min(pltdata[:n_plt_para]-0.2), max(pltdata[:n_plt_para]+0.05)])
     plt.xticks(np.arange(n_plt_para), GSA_dataframe.index[:n_plt_para], fontsize=15, rotation =70)
     plt.yticks(fontsize=16)
     plt.axhline(y=1, linestyle = '--', c ='k')
